@@ -1,3 +1,5 @@
+import "fake-indexeddb/auto"
+import { describe, it, expect } from "vitest"
 import { KVStore } from "../src"
 
 describe("KVStore", () => {
@@ -19,7 +21,7 @@ describe("KVStore", () => {
 
 			await store.set(key, value)
 
-			expect(await store.get(key)).to.eql(value)
+			expect(await store.get(key)).toEqual(value)
 		}),
 	)
 
@@ -30,13 +32,13 @@ describe("KVStore", () => {
 		await store.set(key, "value 1")
 		await store.set(key, "value 2")
 
-		expect(await store.get(key)).to.be("value 2")
+		expect(await store.get(key)).toBe("value 2")
 	})
 
 	it("should return undefined when unknown key", async () => {
 		const store = await testStore()
 
-		expect(await store.get("unknown key")).to.be(undefined)
+		expect(await store.get("unknown key")).toBe(undefined)
 	})
 
 	it("should fail to create the client if indexedDB not available", async () => {
@@ -46,6 +48,6 @@ describe("KVStore", () => {
 
 		const store = await KVStore.tryCreate("foo")
 
-		expect(store).to.be(null)
+		expect(store).toBe(null)
 	})
 })

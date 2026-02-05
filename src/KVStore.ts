@@ -77,8 +77,9 @@ export class KVStore {
 			req.onerror = (evt) => {
 				reject(
 					new Error(
-						`Failed to fetch from IndexedDB: ${(evt?.target as any)
-							?.errorCode}`,
+						`Failed to fetch from IndexedDB: ${
+							(evt?.target as any)?.errorCode
+						}`,
 					),
 				)
 			}
@@ -98,8 +99,9 @@ export class KVStore {
 			req.onerror = (evt) => {
 				reject(
 					new Error(
-						`Failed to persist in IndexedDB: ${(evt?.target as any)
-							?.errorCode}`,
+						`Failed to persist in IndexedDB: ${
+							(evt?.target as any)?.errorCode
+						}`,
 					),
 				)
 			}
